@@ -1,0 +1,8 @@
+0;snake
+0;Cobra
+1;penguin
+1;chicken
+2;pigeon
+2;sparrow
+3;dog
+3;cat
