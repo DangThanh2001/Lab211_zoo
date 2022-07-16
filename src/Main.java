@@ -40,6 +40,7 @@ public class Main {
                     boolean cont = true;
                     while (cont) {
                         System.out.println("Are u want to continue ?");
+                        System.out.print("(Y/N) (y for YES and n for NO): ");
                         if (vali.checkYN()) {
                             Animals a0 = menu.newAnimal();
                             v.add(a0);
@@ -49,7 +50,7 @@ public class Main {
                     }
                     break;
                 case 2:
-                    System.out.print("Choose your order you want to update: ");
+                    System.out.print("Choose the order you want to update: ");
                     int index = vali.checkIntMax(v.size());
                     Animals ani = menu.newAnimal();
                     System.out.println("Are u sure to update ?");
@@ -65,7 +66,7 @@ public class Main {
                     }
                     break;
                 case 3://delete
-                    System.out.print("Choose your order you want to delete: ");
+                    System.out.print("Choose the order you want to delete: ");
                     int index0 = vali.checkIntMax(v.size());
                     System.out.println("Are u sure to delete ?");
                     for (int i = 0; i < v.size(); i++) {
@@ -79,7 +80,7 @@ public class Main {
                     }
                     break;
                 case 4://search
-                    
+                    menu.SearchAnimal(v);
                     break;
                 case 5:
                     menu.ShowAllAnimal(v);

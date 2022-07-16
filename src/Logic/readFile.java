@@ -39,8 +39,9 @@ public class readFile {
     public void writeTxt(Vector<Animals> v) {
         String rs = "";
         for (Animals o : v) {
-            rs += o.toString() + "\n";
+            rs += o.getType() +";"+o.getName() + "\n";
         }
+        rs.trim();
         try {
             FileWriter myWriter = new FileWriter("animals.txt");
             myWriter.write(rs);

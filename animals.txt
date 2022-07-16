@@ -6,3 +6,5 @@
 2;sparrow
 3;dog
 3;cat
+0;lizard
+0;bo cap
