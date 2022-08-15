@@ -6,6 +6,7 @@
 package Logic;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -19,7 +20,7 @@ public class Validate {
         String s = sc.nextLine().trim();
         while (s.isEmpty()) {
             System.out.println("Not allowed!!!\nAgain pls: ");
-            s = sc.nextLine();
+            s = sc.nextLine().trim();
         }
         return s;
     }
@@ -33,11 +34,11 @@ public class Validate {
                     return n;
                 } else {
                     System.out.print("Positive pls!!\nAgian pls:");
-                    num = sc.nextLine();
+                    num = checkString();
                 }
             } catch (Exception e) {
                 System.out.println("Not allowed!!!\nAgain pls: ");
-                num = sc.nextLine();
+                num = checkString();
             }
         }
     }
@@ -50,7 +51,7 @@ public class Validate {
                 return n;
             } catch (Exception e) {
                 System.out.println("Not allowed!!!\nAgain pls: ");
-                num = sc.nextLine();
+                num = checkString();
             }
         }
     }
@@ -58,8 +59,9 @@ public class Validate {
     public boolean checkYN() {
         String ans = checkString();
         while (!ans.equalsIgnoreCase("y") && !ans.equalsIgnoreCase("n")) {
-            System.out.println("Not allowed!!!\nAgain pls: ");
-            ans = sc.nextLine();
+            System.out.println("Not allowed!!!"
+                    + "\nOnly Y/N pls.\nAgain pls: ");
+            ans = checkString();
         }
         if (ans.equalsIgnoreCase("y")) {
             return true;
@@ -71,40 +73,25 @@ public class Validate {
     public int checkIntMax(int max) {
         int n = checkInt();
         while (n > max) {
-            System.out.print("Can't larger than the size\nagain pls:");
+            System.out.print("Can't larger than the size " + max
+                    + "\nagain pls:");
             n = checkInt();
         }
         return n;
     }
 
+    private Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+
+    public boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        return pattern.matcher(strNum).matches();
+    }
+
     public static void main(String[] args) {
         Validate vali = new Validate();
-        int[] arr = {1, 4, 1, 3, 1, 8};
-        int first = 0, fina = 0;
-        //   int n = vali.checkInt();
-//        for (int i = 0; i < arr.length; i++) {
-//            if(n == arr[i]){
-//                first = i;
-//                break;
-//            }
-//        }
-//        for (int i = 0; i < arr.length; i++) {
-//            if(n == arr[i]){
-//                fina = i;
-//            }
-//        }
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++) {
-                if (arr[i] < arr[j]) {
-                    int a = arr[j];
-                    arr[j] = arr[i];
-                    arr[i] = a;
-                }
-            }
-        }
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        // hoc snh co nhieu diem, chon hoc sinh in ra diem cua hs day
+        Scanner sc = new Scanner(System.in);
+        System.out.println(vali.isNumeric("tt"));
     }
 }
