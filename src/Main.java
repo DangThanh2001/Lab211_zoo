@@ -41,6 +41,7 @@ public class Main {
                     while (cont) {
                         System.out.println("Are u want to continue ?");
                         System.out.print("(Y/N) (y for YES and n for NO): ");
+                        int i = 0;
                         if (vali.checkYN()) {
                             Animals a0 = menu.newAnimal();
                             v.add(a0);
